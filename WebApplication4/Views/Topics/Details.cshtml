@@ -1,0 +1,50 @@
+﻿@model WebApplication4.Models.Topic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Topic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic_Clousure_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic_Clousure_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic_Final_Clousure_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic_Final_Clousure_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic_Post_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic_Post_Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TopicID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
