@@ -7,5 +7,7 @@
 
 # Sprint Backlog
 # Product Backlog
-#TestCase
+# TestReport
+[TestReport1.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6175912/TestReport1.docx)
+
 
