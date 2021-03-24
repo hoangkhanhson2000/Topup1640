@@ -14,5 +14,8 @@
 [Product BackLog.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6197144/Product.BackLog.docx)
 # TestReport
 [TestReport1.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6175912/TestReport1.docx)
-
+# Report Layout Web
+[Report-Layout-Login.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6198361/Report-Layout-Login.docx)
+# Report Design Web
+[Layout-Design-Process1.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6198404/Layout-Design-Process1.docx)
 
