@@ -43,12 +43,12 @@
                     @if (User.IsInRole("Student"))
                     {
 
-                        <li>@Html.ActionLink("Add File", "Index", "Support")</li>
+                        <li>@Html.ActionLink("Add File", "Create", "Magazine")</li>
 
                     }
-                    <li>@Html.ActionLink("Falcuty", "Index", "Faculties")</li>
+                   
                     <li>@Html.ActionLink("Topic", "Index", "Topics")</li>
-                    <li>@Html.ActionLink("Magazine", "Index", "Magazines")</li>
+                    <li>@Html.ActionLink("Magazine", "Index", "Magazine")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
