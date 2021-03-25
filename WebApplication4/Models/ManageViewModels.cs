@@ -15,6 +15,8 @@ namespace WebApplication4.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
@@ -84,18 +86,5 @@ namespace WebApplication4.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
-    public class ProfileViewModel
-    {
-        
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-       
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-        
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-       
-    }
+    
 }

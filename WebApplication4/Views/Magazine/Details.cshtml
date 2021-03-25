@@ -1,4 +1,5 @@
-﻿@model WebApplication4.Models.Magazine
+﻿
+@model WebApplication4.Models.Magazine
 
 @{
     ViewBag.Title = "Details";
@@ -10,20 +11,20 @@
     <h4>Magazine</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.FirstName)
+            @Html.DisplayNameFor(model => model.Createby)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AspNetUser.FirstName)
+            @Html.DisplayFor(model => model.Createby)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Topic.Topic_Name)
+            @Html.DisplayNameFor(model => model.Topic.TopicName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Topic.Topic_Name)
+            @Html.DisplayFor(model => model.Topic.TopicName)
         </dd>
 
         <dt>
@@ -41,10 +42,26 @@
         <dd>
             @Html.DisplayFor(model => model.MagazinePostDate)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FileDetails)
+        </dt>
+        <dd class="editor-field">
 
+
+            <ul>
+                @foreach (var item in Model.FileDetails)
+                {
+                    <li>
+                        <a class="" href="/Magazine/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                    </li>
+
+                }
+            </ul>
+        </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MagazineID }) |
+
     @Html.ActionLink("Back to List", "Index")
 </p>

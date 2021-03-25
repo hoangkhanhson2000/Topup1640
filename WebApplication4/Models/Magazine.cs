@@ -1,27 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
 namespace WebApplication4.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("Magazine")]
-    public partial class Magazine
+    public class Magazine
     {
         public int MagazineID { get; set; }
 
-        [StringLength(128)]
-        public string UserID { get; set; }
+        [Display(Name = "Create by")]
 
-        public int? TopicID { get; set; }
+        public string Createby { get; set; }
+        [Display(Name = "Magazine Name")]
 
         public string MagazineName { get; set; }
 
+
+        [Display(Name = "Magazine Post Date")]
+
         public DateTime? MagazinePostDate { get; set; }
 
-        public virtual AspNetUser AspNetUser { get; set; }
+        public int? TopicID { get; set; }
+        public virtual ICollection<FileDetail> FileDetails { get; set; }
 
         public virtual Topic Topic { get; set; }
+
     }
 }

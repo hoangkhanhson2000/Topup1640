@@ -1,36 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
 namespace WebApplication4.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("Topic")]
     public partial class Topic
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Topic()
-        {
-            Magazines = new HashSet<Magazine>();
-        }
-
         public int TopicID { get; set; }
 
-        [Column("Topic Name")]
-        public string Topic_Name { get; set; }
+        [Display(Name = "Topic Name")]
+        public string TopicName { get; set; }
 
-        [Column("Topic Clousure Date")]
-        public DateTime? Topic_Clousure_Date { get; set; }
+        [Display(Name = "Topic Clousure Date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        public DateTime? TopicClousureDate { get; set; }
 
-        [Column("Topic Final Clousure Date")]
-        public DateTime? Topic_Final_Clousure_Date { get; set; }
+        [Display(Name = "Topic Final Clousure Date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        public DateTime? TopicFinalClousureDate { get; set; }
 
-        [Column("Topic Post Date")]
-      
-        public DateTime? Topic_Post_Date { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Display(Name = "Topic Post Date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        public DateTime? TopicPostDate { get; set; }
         public virtual ICollection<Magazine> Magazines { get; set; }
     }
 }

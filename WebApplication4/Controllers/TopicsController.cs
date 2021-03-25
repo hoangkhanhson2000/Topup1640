@@ -12,7 +12,7 @@ namespace WebApplication4.Controllers
 {
     public class TopicsController : Controller
     {
-        private Model1 db = new Model1();
+        private MagazineContext db = new MagazineContext();
 
         // GET: Topics
         public ActionResult Index()
@@ -38,8 +38,8 @@ namespace WebApplication4.Controllers
         // GET: Topics/Create
         public ActionResult Create()
         {
-            return View(new Topic { Topic_Post_Date = DateTime.Now });
-          
+            return View(new Topic { TopicPostDate = DateTime.Now });
+
         }
 
         // POST: Topics/Create
@@ -47,13 +47,12 @@ namespace WebApplication4.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TopicID,Topic_Name,Topic_Clousure_Date,Topic_Final_Clousure_Date,Topic_Post_Date")] Topic topic)
+        public ActionResult Create([Bind(Include = "TopicID,TopicName,TopicClousureDate,TopicFinalClousureDate,TopicPostDate")] Topic topic)
         {
             if (ModelState.IsValid)
             {
                 db.Topics.Add(topic);
                 db.SaveChanges();
-                
                 return RedirectToAction("Index");
             }
 
@@ -80,7 +79,7 @@ namespace WebApplication4.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TopicID,Topic_Name,Topic_Clousure_Date,Topic_Final_Clousure_Date,Topic_Post_Date")] Topic topic)
+        public ActionResult Edit([Bind(Include = "TopicID,TopicName,TopicClousureDate,TopicFinalClousureDate,TopicPostDate")] Topic topic)
         {
             if (ModelState.IsValid)
             {

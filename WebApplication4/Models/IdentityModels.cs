@@ -11,6 +11,7 @@ namespace WebApplication4.Models
     {
         public string FirstName { get;  set; }
         public string LastName { get; set; }
+        public string Falcuty { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -35,6 +36,6 @@ namespace WebApplication4.Models
             return new ApplicationDbContext();
         }
 
-        
+       
     }
 }

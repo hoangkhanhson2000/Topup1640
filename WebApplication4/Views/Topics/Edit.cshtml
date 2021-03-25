@@ -1,4 +1,4 @@
-﻿@model WebApplication4.Models.Topic
+﻿@model  WebApplication4.Models.Topic
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Topic</h4>
         <hr />
@@ -17,34 +17,34 @@
         @Html.HiddenFor(model => model.TopicID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Topic_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TopicName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Topic_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Topic_Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TopicName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Topic_Clousure_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TopicClousureDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Topic_Clousure_Date, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-                @Html.ValidationMessageFor(model => model.Topic_Clousure_Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TopicClousureDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.TopicClousureDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Topic_Final_Clousure_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TopicFinalClousureDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Topic_Final_Clousure_Date, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
-                @Html.ValidationMessageFor(model => model.Topic_Final_Clousure_Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TopicFinalClousureDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.TopicFinalClousureDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Topic_Post_Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TopicPostDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Topic_Post_Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Topic_Post_Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TopicPostDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TopicPostDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
