@@ -24,6 +24,7 @@ namespace WebApplication4.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+       
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -35,7 +36,7 @@ namespace WebApplication4.Models
         {
             return new ApplicationDbContext();
         }
-
        
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebApplication4.Models.Magazine>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Article";
 }
 
 <h2></h2>
@@ -87,12 +87,6 @@
 </style>
 
 
-@if (User.IsInRole("Student"))
-{
-    <button class="btn btn-group-vertical" lang="en">
-        @Html.ActionLink("Add New Article", "Create")
-    </button>
-}
 
 <h2>Article</h2>
 
@@ -102,53 +96,47 @@
 
     @foreach (var item in Model)
     {
-        if (item.Createby == User.Identity.Name)
-        {
-            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+       
+      
+    <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
 
-                <div class="" style="margin:10px">
-                    <h4><b> @Html.DisplayFor(modelItem => item.MagazineName)</b></h4>
+        <div class="" style="margin:10px">
+            <h3><b> @Html.DisplayFor(modelItem => item.MagazineName)</b></h3>
 
-                    <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Createby): <br /></p><p>@Html.DisplayFor(modelItem => item.Createby)</p>
-                    <p style="color:darkblue"> @Html.DisplayNameFor(model => model.MagazinePostDate):<br /></p><p>@Html.DisplayFor(modelItem => item.MagazinePostDate)<p>
-                    <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Topic.TopicName):<br /></p><p>@Html.DisplayFor(modelItem => item.Topic.TopicName)<p>
+            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Createby): <br /></p><p>@Html.DisplayFor(modelItem => item.Createby)</p>
+            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.MagazinePostDate):<br /></p><p>@Html.DisplayFor(modelItem => item.MagazinePostDate)<p>
+            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Topic.TopicName):<br /></p><p>@Html.DisplayFor(modelItem => item.Topic.TopicName)<p>
 
-                    <p>
-                    <p style="color:darkblue">
-                        Total Files:
-                    </p>
+            <p>
+            <p style="color:darkblue">
+                Total Files:
+            </p>
+            <p>
+                @if (item.FileDetails.Count() == 0)
+                {
+                    <span>No File</span>
+                }
+                else
+                {
+                    <span>@item.FileDetails.Count() File(s)</span>
+                }
 
-                    @if (item.FileDetails.Count() == 0)
-                    {
-                        <span>No File</span>
-                    }
-                    else
-                    {
-                        <span>@item.FileDetails.Count() File(s)</span>
-                    }
-                    <br>
-                    <br>
-                    @if (User.IsInRole("Student"))
-                    {
-                        <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })</button>
-                    }
-                    <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
+             </p>
 
-                    @if (User.IsInRole("Student"))
-                    {
-                        <p class="btn btn-info"><a href="javascript:void(0);" data-id="@item.MagazineID" class="deleteItem">Delete</a></p>
-                    }
-                </div>
+                <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
 
-            </div>
 
-        }
+        </div>
+       
+    </div>
+
+        
     }
 </div>
-     
-    @section Scripts {
 
-        <script>
+@section Scripts {
+
+    <script>
         $('.deleteItem').click(function (e) {
             e.preventDefault();
             var $ctrl = $(this);
@@ -159,9 +147,8 @@
                     data: { id: $(this).data('id') }
                 }).done(function (data) {
                     if (data.Result == "OK") {
-                        
                         $ctrl.closest('tr').remove();
-                        
+                        alert("Delete Success");
                     }
                     else if (data.Result.Message) {
                         alert(data.Result.Message);
@@ -172,6 +159,6 @@
 
             }
         });
-        </script>
+    </script>
 
-    }
+}

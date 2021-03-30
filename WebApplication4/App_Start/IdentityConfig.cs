@@ -29,9 +29,9 @@ namespace WebApplication4
             //client.Timeout = 10000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("hoangkhanhson2000@gmail.com", "123Tsu27");
+            client.Credentials = new NetworkCredential("fptmanager1640@gmail.com", "123@abcd");
 
-            return client.SendMailAsync("hoangkhanhson2000@gmail.com", message.Destination, message.Subject, message.Body);
+            return client.SendMailAsync("fptmanager1640@gmail.com", message.Destination, message.Subject, message.Body);
         }
     }
 

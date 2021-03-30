@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+
 using WebApplication4.Models;
 
 namespace WebApplication4.Controllers
@@ -16,6 +18,11 @@ namespace WebApplication4.Controllers
 
         //
         // GET: /Support/
+        public ActionResult Article()
+        {
+            
+            return View(db.Magazines.ToList());
+        }
 
         public ActionResult Index()
         {
@@ -36,8 +43,9 @@ namespace WebApplication4.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Magazine magazine)
+        public ActionResult Create(Magazine magazine, string receiver)
         {
+            
             if (ModelState.IsValid)
             {
                 List<FileDetail> fileDetails = new List<FileDetail>();
@@ -64,6 +72,12 @@ namespace WebApplication4.Controllers
                 magazine.FileDetails = fileDetails;
                 db.Magazines.Add(magazine);
                 db.SaveChanges();
+
+                
+                string subject = "Your student has submitted their post submission for your Topic";
+                string body = "Hi Marketing Coordinator, " + "Your student has submitted their post submission for your Topic: " +magazine.TopicName + " Student's name: " + User.Identity.Name + " Submit Date: " + DateTime.Now;
+                WebMail.Send(receiver,subject, body);
+
                 return RedirectToAction("Index");
             }
 
@@ -101,7 +115,7 @@ namespace WebApplication4.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Magazine magazine)
+        public ActionResult Edit(Magazine magazine, string receiver)
         {
             if (ModelState.IsValid)
             {
@@ -130,6 +144,9 @@ namespace WebApplication4.Controllers
                 ViewBag.TopicID = new SelectList(db.Topics, "TopicID", "TopicName", magazine.TopicID);
                 db.Entry(magazine).State = EntityState.Modified;
                 db.SaveChanges();
+                string subject = "Your student has Delete their post submission for your Topic";
+                string body = "Hi Marketing Coordinator," + "Your student has editted their post submission for your Topic: " + magazine.TopicName+ " Student's name: " + User.Identity.Name + " Submit Date: " + DateTime.Now;
+                WebMail.Send(receiver, subject, body);
                 return RedirectToAction("Index");
             }
             return View(magazine);
@@ -193,7 +210,7 @@ namespace WebApplication4.Controllers
         // POST: /Support/Delete/5
 
         [HttpPost]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(int id, string receiver)
         {
             try
             {
@@ -217,11 +234,16 @@ namespace WebApplication4.Controllers
 
                 db.Magazines.Remove(magazine);
                 db.SaveChanges();
+                string subject = "Your student has Deleted their post submission for your Topic";
+                string body = "Hi Marketing Coordinator" + " Your student has deleted their post submission for your Topic: " + magazine.TopicName + "Student's name: " + User.Identity.Name + " Submit Date: " + DateTime.Now;
+                WebMail.Send(receiver, subject, body);
+
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)
             {
                 return Json(new { Result = "ERROR", Message = ex.Message });
+
             }
         }
 

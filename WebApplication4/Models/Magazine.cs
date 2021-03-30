@@ -9,20 +9,23 @@ namespace WebApplication4.Models
     public class Magazine
     {
         public int MagazineID { get; set; }
-
+        [Required(ErrorMessage = "Please Login")]
         [Display(Name = "Create by")]
 
         public string Createby { get; set; }
-        [Display(Name = "Magazine Name")]
 
+        [Required(ErrorMessage = "Please type Article Name ")]
+        [Display(Name = "Magazine Name")]
+       
+      
         public string MagazineName { get; set; }
 
-
-        [Display(Name = "Magazine Post Date")]
+        [Display(Name = "Article Post Date")]
 
         public DateTime? MagazinePostDate { get; set; }
 
         public int? TopicID { get; set; }
+        public int? TopicName { get; set; }
         public virtual ICollection<FileDetail> FileDetails { get; set; }
 
         public virtual Topic Topic { get; set; }

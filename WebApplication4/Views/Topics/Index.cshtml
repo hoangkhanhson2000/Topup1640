@@ -4,49 +4,65 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2> </h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TopicName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TopicClousureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TopicFinalClousureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TopicPostDate)
-        </th>
-        <th></th>
-    </tr>
+
+
+
+
+
+<style>
+    .card {
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
+        transition: 0.3s;
+        width: 30%;
+        border-radius: 5px
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+        }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+</style>
+
+@if (User.IsInRole("Marketing Manager"))
+{
+
+    <button class="btn btn-group-vertical">
+        @Html.ActionLink("Create New Topic", "Create")
+    </button>
+}
+<h1 style="color:mediumvioletred">Topic</h1>
+<div class="row" style="color:black;">
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TopicName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TopicClousureDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TopicFinalClousureDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TopicPostDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TopicID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TopicID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })
-            </td>
-        </tr>
-    }
+        <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
 
-</table>
+            <div class="" style="margin:10px">
+                <h3 style="color:brown"><b> @Html.DisplayFor(modelItem => item.TopicName)</b></h3>
+
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicClousureDate): <br /></p><p>@Html.DisplayFor(modelItem => item.TopicClousureDate)</p>
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicFinalClousureDate):<br /> </p><p>@Html.DisplayFor(modelItem => item.TopicFinalClousureDate)<p>
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicPostDate):<br /> </p><p>@Html.DisplayFor(modelItem => item.TopicPostDate)<p>
+                    @if (User.IsInRole("Marketing Manager"))
+                    {
+                        <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.TopicID })</button>
+                    }
+
+                    <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.TopicID })</button>
+                    @if (User.IsInRole("Marketing Manager"))
+                    {
+                        <button class="btn btn-info"> @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })</button>
+                    }
+            </div>
+
+        </div>
+
+
+    }
+</div>
+

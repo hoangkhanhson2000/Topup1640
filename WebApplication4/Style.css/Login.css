@@ -1,6 +1,6 @@
 ﻿body {
     margin: 0;
-    color: #edf3ff;
+    color: black;
     background: #c8c8c8;
     background: url(https://hdqwalls.com/download/material-design-4k-2048x1152.jpg) fixed;
     background-size: cover;
@@ -21,8 +21,8 @@
     display: block
 }
 
-a {
-    color: inherit;
+.a {
+    color:darkblue;
     text-decoration: none
 }
 
@@ -104,7 +104,7 @@ a {
         .login-form .group .input,
         .login-form .group .button {
             width: 100%;
-            color: #fff;
+            color: black;
             display: block;
         }
 

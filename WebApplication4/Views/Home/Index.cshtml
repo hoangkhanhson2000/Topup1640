@@ -1,31 +1,155 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@model IEnumerable<WebApplication4.Models.Magazine>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<style>
+    .card {
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
+        transition: 0.3s;
+        width: 30%;
+        border-radius: 5px
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,1);
+        }
+
+ 
+</style>
+<div class="">
+
+    <h1 style="color:red">Welcome  @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name :"Guest") !</h1>
+
+    <h1 style="color:midnightblue">Home Page</h1>
+
+
+    <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+        <div class="" style="margin:10px">
+            <h4><b> Article View</b></h4>
+
+
+            <button class="btn btn-info">@Html.ActionLink("View Article", "Article", "Magazine")</button>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div class="row" style="color:black;">
+
+        @if (User.IsInRole("Student"))
+        {
+
+
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b>Article Add</b></h4>
+
+
+                    <button class="btn btn-info">@Html.ActionLink("Add Article", "Create", "Magazine")</button>
+                </div>
+
+            </div>
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b>My Article</b></h4>
+
+
+                    <button class="btn btn-info">@Html.ActionLink("View My Article", "Index", "Magazine")</button>
+                </div>
+
+            </div>
+
+
+
+
+        }
+
+
+        @if (User.IsInRole("Marketing Coordinator"))
+        {
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b> Topic Manage</b></h4>
+
+
+                    <button class="btn btn-info"> @Html.ActionLink("View Topic", "Index", "Topics")</button>
+                </div>
+
+            </div>
+
+
+
+
+
+        }
+
+
+        @if (User.IsInRole("Marketing Manager"))
+        {
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b> Topic Manage</b></h4>
+
+
+                    <button class="btn btn-info"> @Html.ActionLink("Topic", "Index", "Topics")</button>
+                </div>
+
+            </div>
+
+
+
+
+
+        }
+
+
+        @if (User.IsInRole("Admin"))
+        {
+
+
+
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b> Role Manage </b></h4>
+
+
+                    <button class="btn btn-info"> @Html.ActionLink("Role", "Index", "Role")</button>
+
+                </div>
+
+            </div>
+            <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+
+                <div class="" style="margin:10px">
+                    <h4><b> Add Account </b></h4>
+
+
+                    <button class="btn btn-info">@Html.ActionLink("Add Account", "Register", "Account")</button>
+                </div>
+
+            </div>
+
+
+        }
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+
+
+    }
+
+
+
+    @if (User.IsInRole("Student"))
+    {
+
+
+    }
 </div>

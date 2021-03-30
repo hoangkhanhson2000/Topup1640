@@ -45,14 +45,14 @@
         <dt>
             @Html.DisplayNameFor(model => model.FileDetails)
         </dt>
-        <dd class="editor-field">
+        <dd class="editor-field" >
 
 
-            <ul>
+            <ul style="">
                 @foreach (var item in Model.FileDetails)
                 {
-                    <li>
-                        <a class="" href="/Magazine/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
+                    <li >
+                        <a class="" style="color:black" href="/Magazine/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
                     </li>
 
                 }
@@ -61,7 +61,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MagazineID }) |
+    
 
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Article")
 </p>
