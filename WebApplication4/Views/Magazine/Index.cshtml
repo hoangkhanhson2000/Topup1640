@@ -132,7 +132,12 @@
                     {
                         <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })</button>
                     }
-                    <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
+
+                    @if (User.IsInRole("Student"))
+                    {
+                        <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
+                    }
+
 
                     @if (User.IsInRole("Student"))
                     {

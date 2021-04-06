@@ -46,9 +46,17 @@
                         <li>@Html.ActionLink("Add File", "Create", "Magazine")</li>
 
                     }
-                   
+
                     <li>@Html.ActionLink("Topic", "Index", "Topics")</li>
                     <li>@Html.ActionLink("Article", "Article", "Magazine")</li>
+                    @if (User.IsInRole("Marketing Coordinator"))
+                    {
+
+                        <li>@Html.ActionLink("Edit Articles Comments", "indexs", "ArticlesComments")</li>
+
+                    }                    
+                   
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

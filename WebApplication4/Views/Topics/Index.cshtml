@@ -53,7 +53,7 @@
                         <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.TopicID })</button>
                     }
 
-                    <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.TopicID })</button>
+
                     @if (User.IsInRole("Marketing Manager"))
                     {
                         <button class="btn btn-info"> @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })</button>

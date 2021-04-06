@@ -12,28 +12,16 @@ namespace WebApplication4.Controllers
     {
        
        
-     
+     [Authorize]
         public ActionResult Index()
         {
             
             return View();
         }
 
-  
-        public ActionResult About()
-        { 
+       
 
-         
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
 
     }

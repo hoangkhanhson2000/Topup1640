@@ -4,6 +4,11 @@
 @{
     ViewBag.Title = "Details";
 }
+@{
+
+    var comments = (IEnumerable<WebApplication4.Models.ArticlesComment>)ViewBag.Comments;
+
+}
 
 <h2>Details</h2>
 
@@ -45,13 +50,13 @@
         <dt>
             @Html.DisplayNameFor(model => model.FileDetails)
         </dt>
-        <dd class="editor-field" >
+        <dd class="editor-field">
 
 
             <ul style="">
                 @foreach (var item in Model.FileDetails)
                 {
-                    <li >
+                    <li>
                         <a class="" style="color:black" href="/Magazine/Download/?p=@(item.Id + item.Extension)&d=@item.FileName">@item.FileName</a>
                     </li>
 
@@ -60,8 +65,41 @@
         </dd>
     </dl>
 </div>
-<p>
-    
+<hr>
+<h1> Comment</h1>
+@foreach (var c in comments)
 
-    @Html.ActionLink("Back to List", "Article")
+{
+
+    <hr>
+    <div class="row">
+
+        <div class="col-md-3">
+            <i>Comment By:</i>
+            <i>@c.CommentBy</i>
+        </div>
+        <div class="col-md-3">
+            <i>Comment:</i>
+            @Html.Raw(c.Comment.Replace("\n", "<br />"))
+        </div>
+        <div class="col-md-3">
+            <i>Comment Date:</i>
+            <i>@c.CommentOn</i>
+        </div>
+
+      
+    </div>
+}
+<hr />
+@if (User.IsInRole("Marketing Coordinator")) { 
+    @Html.Partial("CommentBox")}
+<p>
+
+
+    
 </p>
+
+
+
+
+

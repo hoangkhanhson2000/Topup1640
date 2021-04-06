@@ -1,0 +1,70 @@
+﻿
+<dl class="dl-horizontal">
+    <dt>
+        Comment
+    </dt>
+
+    <dd>
+        <div class="commentBox">
+            @using (Html.BeginForm("Create", "ArticlesComments", FormMethod.Post, new { onsubmit = "return SubmitComment()" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <textarea name="Comment" id="Comment" required rows="7" style="width:100%;" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="hidden" name="MagazineID" value="@ViewBag.MagazineID" />
+                            <input type="hidden" name="CommentOn" value="@DateTime.Now" />
+                            <input type="hidden" name="CommentBy" value="@User.Identity.Name" />
+                            <input type="submit" id="" name="" value="Submit Comment" class="btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </dd>
+
+</dl>
+<script>
+    function SubmitComment()
+    {
+    {
+  return true;
+        }
+    }
+
+    //function CRate(r) {
+    //    $("#Rating").val(r);
+    //    for (var i = 1; i <= r; i++) {
+    //        $("#Rate" + i).attr('class', 'starGlow');
+    //    }
+    //    // unselect remaining
+    //    for (var i = r + 1; i <= 5; i++) {
+    //        $("#Rate" + i).attr('class', 'starFade');
+    //    }
+    //}
+
+    //function CRateOver(r) {
+    //    for (var i = 1; i <= r; i++) {
+    //        $("#Rate" + i).attr('class', 'starGlow');
+    //    }
+    //}
+
+    //function CRateOut(r) {
+    //    for (var i = 1; i <= r; i++) {
+    //        $("#Rate" + i).attr('class', 'starFade');
+    //    }
+    //}
+
+    //function CRateSelected() {
+    //    var setRating = $("#Rating").val();
+    //    for (var i = 1; i <= setRating; i++) {
+    //        $("#Rate" + i).attr('class', 'starGlow');
+    //    }
+    //}
+</script>

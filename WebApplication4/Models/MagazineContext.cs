@@ -16,7 +16,7 @@ namespace WebApplication4.Models
         public DbSet<FileDetail> FileDetails { get; set; }
         public virtual DbSet<Topic> Topics { get; set; }
 
-
+        public virtual DbSet<ArticlesComment> ArticlesComments { get; set; }
 
 
     }

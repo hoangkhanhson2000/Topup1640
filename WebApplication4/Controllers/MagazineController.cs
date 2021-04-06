@@ -158,12 +158,16 @@ namespace WebApplication4.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Magazine topic = db.Magazines.Find(id);
-            if (topic == null)
+            Magazine magazine = db.Magazines.Find(id);
+            if (magazine == null)
             {
                 return HttpNotFound();
             }
-            return View(topic);
+            ViewBag.MagazineID = id.Value;
+            var comments = db.ArticlesComments.Where(d => d.Magazine.MagazineID.Equals(id.Value)).ToList();
+            ViewBag.Comments = comments;
+           
+            return View(magazine);
         }
         [HttpPost]
 

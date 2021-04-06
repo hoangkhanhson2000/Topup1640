@@ -27,6 +27,7 @@ namespace WebApplication4.Models
         public int? TopicID { get; set; }
         public int? TopicName { get; set; }
         public virtual ICollection<FileDetail> FileDetails { get; set; }
+        public virtual ICollection<ArticlesComment> ArticlesComments { get; set; }
 
         public virtual Topic Topic { get; set; }
 
