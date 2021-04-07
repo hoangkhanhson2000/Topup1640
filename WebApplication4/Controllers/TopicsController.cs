@@ -10,6 +10,7 @@ using WebApplication4.Models;
 
 namespace WebApplication4.Controllers
 {
+    [Authorize]
     public class TopicsController : Controller
     {
         private MagazineContext db = new MagazineContext();
