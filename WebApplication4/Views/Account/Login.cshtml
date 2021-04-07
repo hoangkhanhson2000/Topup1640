@@ -13,32 +13,32 @@
             {
                 @Html.AntiForgeryToken()
 
-            <div class="sign-in-htm">
-                <div class="group">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-12">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                <div class="sign-in-htm">
+                    <div class="group">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="group">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-12">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <div class="group">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign In">
+                    </div>
+                    @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    <div class="hr"></div>
                 </div>
-                <div class="group">
-                    <input type="submit" class="button" value="Sign In">
-                </div>
-                @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account", new { area = "" }, new { @class = "navbar-brand" })
-                <div class="hr"></div>
-            </div>
 
 
                 <div class="for-pwd-htm">
@@ -48,11 +48,12 @@
                     <div class="hr"></div>
                 </div>
             }
-        </div> 
+        </div>
     </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Style.css/Login.css")
 }
 
 
