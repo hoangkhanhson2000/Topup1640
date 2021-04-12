@@ -3,12 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
+<h2>Article</h2>
 
-<h2></h2>
+@if (User.IsInRole("Marketing Manager"))
+{
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
             <th>
@@ -67,7 +66,136 @@
             </tr>
         }
 
-    </table>*@
+    </table>
+}
+
+@if (User.IsInRole("Marketing Coordinator"))
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Createby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagazineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic.TopicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagazinePostDate)
+            </th>
+
+
+            <th>Total Files</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Createby)
+                </th>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MagazineName)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Topic.TopicName)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MagazinePostDate)
+                </td>
+
+                <td>
+                    @if (item.FileDetails.Count() == 0)
+                    {
+                        <span>No File</span>
+                    }
+                    else
+                    {
+                        <span>@item.FileDetails.Count() File(s)</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Createby == User.Identity.Name)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })} |
+                    @Html.ActionLink("Detail", "Details", new { id = item.MagazineID }) |
+
+                    <a href="javascript:void(0);" data-id="@item.MagazineID" class="deleteItem">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@if (User.IsInRole("Admin"))
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Createby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagazineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic.TopicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MagazinePostDate)
+            </th>
+
+
+            <th>Total Files</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Createby)
+                </th>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MagazineName)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Topic.TopicName)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MagazinePostDate)
+                </td>
+
+                <td>
+                    @if (item.FileDetails.Count() == 0)
+                    {
+                        <span>No File</span>
+                    }
+                    else
+                    {
+                        <span>@item.FileDetails.Count() File(s)</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Createby == User.Identity.Name)
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })} |
+                    @Html.ActionLink("Detail", "Details", new { id = item.MagazineID }) |
+
+                    <a href="javascript:void(0);" data-id="@item.MagazineID" class="deleteItem">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
 
 <style>
     .card {
@@ -94,7 +222,6 @@
     </button>
 }
 
-<h2>Article</h2>
 
 
 
@@ -150,10 +277,10 @@
         }
     }
 </div>
-     
-    @section Scripts {
 
-        <script>
+@section Scripts {
+
+    <script>
         $('.deleteItem').click(function (e) {
             e.preventDefault();
             var $ctrl = $(this);
@@ -164,9 +291,9 @@
                     data: { id: $(this).data('id') }
                 }).done(function (data) {
                     if (data.Result == "OK") {
-                        
+
                         $ctrl.closest('tr').remove();
-                        
+
                     }
                     else if (data.Result.Message) {
                         alert(data.Result.Message);
@@ -177,6 +304,6 @@
 
             }
         });
-        </script>
+    </script>
 
-    }
+}

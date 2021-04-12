@@ -4,70 +4,71 @@
     ViewBag.Title = "Article";
 }
 
+<h2>Article</h2>
 <h2></h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Createby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MagazineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic.TopicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MagazinePostDate)
+        </th>
+
+
+        <th>Total Files</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Createby)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MagazineName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Topic.TopicName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MagazinePostDate)
+                @Html.DisplayFor(modelItem => item.Createby)
             </th>
 
+            <td>
+                @Html.DisplayFor(modelItem => item.MagazineName)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Topic.TopicName)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.MagazinePostDate)
+            </td>
 
-            <th>Total Files</th>
-            <th></th>
+            <td>
+                @if (item.FileDetails.Count() == 0)
+                {
+                    <span>No File</span>
+                }
+                else
+                {
+                    <span>@item.FileDetails.Count() File(s)</span>
+                }
+            </td>
+            <td>
+                @if (item.Createby == User.Identity.Name)
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })} |
+                @Html.ActionLink("Detail", "Details", new { id = item.MagazineID }) |
+
+                <a href="javascript:void(0);" data-id="@item.MagazineID" class="deleteItem">Delete</a>
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Createby)
-                </th>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.MagazineName)
-                </td>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Topic.TopicName)
-                </th>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MagazinePostDate)
-                </td>
-
-                <td>
-                    @if (item.FileDetails.Count() == 0)
-                    {
-                        <span>No File</span>
-                    }
-                    else
-                    {
-                        <span>@item.FileDetails.Count() File(s)</span>
-                    }
-                </td>
-                <td>
-                    @if (item.Createby == User.Identity.Name)
-                    {
-                        @Html.ActionLink("Edit", "Edit", new { id = item.MagazineID })} |
-                    @Html.ActionLink("Detail", "Details", new { id = item.MagazineID }) |
-
-                    <a href="javascript:void(0);" data-id="@item.MagazineID" class="deleteItem">Delete</a>
-                </td>
-            </tr>
-        }
-
-    </table>*@
+</table>
 
 <style>
     .card {
@@ -88,51 +89,50 @@
 
 
 
-<h2>Article</h2>
 
 
 
-<div class="row" style="color:black;">
+@*<div class="row" style="color:black;">
 
-    @foreach (var item in Model)
-    {
-       
-      
-    <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
+        @foreach (var item in Model)
+        {
 
-        <div class="" style="margin:10px">
-            <h3><b> @Html.DisplayFor(modelItem => item.MagazineName)</b></h3>
 
-            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Createby): <br /></p><p>@Html.DisplayFor(modelItem => item.Createby)</p>
-            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.MagazinePostDate):<br /></p><p>@Html.DisplayFor(modelItem => item.MagazinePostDate)<p>
-            <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Topic.TopicName):<br /></p><p>@Html.DisplayFor(modelItem => item.Topic.TopicName)<p>
+        <div class="card col-md-3" style="margin:10px; background-color:whitesmoke">
 
-            <p>
-            <p style="color:darkblue">
-                Total Files:
-            </p>
-            <p>
-                @if (item.FileDetails.Count() == 0)
-                {
-                    <span>No File</span>
-                }
-                else
-                {
-                    <span>@item.FileDetails.Count() File(s)</span>
-                }
+            <div class="" style="margin:10px">
+                <h3><b> @Html.DisplayFor(modelItem => item.MagazineName)</b></h3>
 
-             </p>
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Createby): <br /></p><p>@Html.DisplayFor(modelItem => item.Createby)</p>
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.MagazinePostDate):<br /></p><p>@Html.DisplayFor(modelItem => item.MagazinePostDate)<p>
+                <p style="color:darkblue"> @Html.DisplayNameFor(model => model.Topic.TopicName):<br /></p><p>@Html.DisplayFor(modelItem => item.Topic.TopicName)<p>
 
-                <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
+                <p>
+                <p style="color:darkblue">
+                    Total Files:
+                </p>
+                <p>
+                    @if (item.FileDetails.Count() == 0)
+                    {
+                        <span>No File</span>
+                    }
+                    else
+                    {
+                        <span>@item.FileDetails.Count() File(s)</span>
+                    }
 
+                 </p>
+
+                    <button class="btn btn-info"> @Html.ActionLink("Details", "Details", new { id = item.MagazineID })</button>
+
+
+            </div>
 
         </div>
-       
-    </div>
 
-        
-    }
-</div>
+
+        }
+    </div>*@
 
 @section Scripts {
 
