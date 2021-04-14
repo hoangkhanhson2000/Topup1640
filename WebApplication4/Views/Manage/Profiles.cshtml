@@ -1,9 +1,5 @@
-﻿@model IEnumerable<WebApplication4.Models.AspNetUser>
+﻿@model IEnumerable<WebApplication4.Models.ManageLoginsViewModel>
 
-@{
-    ViewBag.Title = "Index";
-   var Roles = (IEnumerable<WebApplication4.Models.ArticlesComment>)ViewBag.Comments;
-}
 
 <h2>Manage Account</h2>
 
@@ -11,7 +7,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LastName)
@@ -26,7 +22,7 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-       
+
 
         <th></th>
     </tr>
@@ -50,7 +46,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
-           
+
 
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

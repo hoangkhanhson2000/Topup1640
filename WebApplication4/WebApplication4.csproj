@@ -265,7 +265,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
-    <Content Include="Views\Account\Profiles.cshtml" />
     <Content Include="Views\Magazine\Create.cshtml" />
     <Content Include="Views\Magazine\Index.cshtml" />
     <Content Include="Views\Magazine\Delete.cshtml" />
@@ -294,6 +293,7 @@
     <Content Include="Views\ArticlesComments\Edit.cshtml" />
     <Content Include="Views\ArticlesComments\Index.cshtml" />
     <Content Include="Views\ArticlesComments\Indexs.cshtml" />
+    <Content Include="Views\Manage\Profiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />

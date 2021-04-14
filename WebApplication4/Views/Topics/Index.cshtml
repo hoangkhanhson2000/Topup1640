@@ -48,17 +48,20 @@
                 <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicClousureDate): <br /></p><p>@Html.DisplayFor(modelItem => item.TopicClousureDate)</p>
                 <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicFinalClousureDate):<br /> </p><p>@Html.DisplayFor(modelItem => item.TopicFinalClousureDate)<p>
                 <p style="color:darkblue"> @Html.DisplayNameFor(model => model.TopicPostDate):<br /> </p><p>@Html.DisplayFor(modelItem => item.TopicPostDate)<p>
-                    @if (User.IsInRole("Marketing Manager"))
-                    {
-                        <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.TopicID })</button>
-                    }
+    @if (User.IsInRole("Marketing Manager"))
+    {
+        <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.TopicID })</button>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <button class="btn btn-info"> @Html.ActionLink("Edit", "Edit", new { id = item.TopicID })</button>
+    }
 
-
-                    @if (User.IsInRole("Marketing Manager"))
-                    {
-                        <button class="btn btn-info"> @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })</button>
-                    }
-            </div>
+    @if (User.IsInRole("Marketing Manager"))
+    {
+        <button class="btn btn-info"> @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })</button>
+    }
+</div>
 
         </div>
 

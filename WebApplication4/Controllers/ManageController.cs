@@ -326,8 +326,8 @@ namespace WebApplication4.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+  
 
-        
 
         protected override void Dispose(bool disposing)
         {

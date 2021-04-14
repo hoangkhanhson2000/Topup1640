@@ -1,7 +1,0 @@
-﻿@using Microsoft.AspNet.Identity
-@Model ApplicationUser
-<li>
-    @Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-</li>
-
-@Html.ActionLink(User.Identity.GetType() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })

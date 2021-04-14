@@ -87,16 +87,20 @@
             <i>@c.CommentOn</i>
         </div>
 
-      
+
     </div>
 }
 <hr />
-@if (User.IsInRole("Marketing Coordinator")) { 
+@if (User.IsInRole("Marketing Coordinator"))
+{
+    @Html.Partial("CommentBox")}
+@if (User.IsInRole("Student"))
+{
     @Html.Partial("CommentBox")}
 <p>
 
 
-    
+
 </p>
 
 
