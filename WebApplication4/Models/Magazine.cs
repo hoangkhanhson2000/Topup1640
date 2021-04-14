@@ -17,7 +17,6 @@ namespace WebApplication4.Models
         [Required(ErrorMessage = "Please type Article Name ")]
         [Display(Name = "Magazine Name")]
        
-      
         public string MagazineName { get; set; }
 
         [Display(Name = "Article Post Date")]
@@ -28,7 +27,6 @@ namespace WebApplication4.Models
         public int? TopicName { get; set; }
         public virtual ICollection<FileDetail> FileDetails { get; set; }
         public virtual ICollection<ArticlesComment> ArticlesComments { get; set; }
-
         public virtual Topic Topic { get; set; }
 
     }
