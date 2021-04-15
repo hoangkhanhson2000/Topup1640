@@ -1,5 +1,6 @@
 
 # Topup1640
+Member: Pham The Phi(GCS18786), Nguyen Thanh Nhan, Hoang Khanh Son, Tong Dam Thang Long, Pham Tuan Kiet, Trinh Huynh Duc
 # Meeting
 
 [GroupMeeting1.docx](https://github.com/hoangkhanhson2000/Topup1640/files/6175558/GroupMeeting1.docx)
